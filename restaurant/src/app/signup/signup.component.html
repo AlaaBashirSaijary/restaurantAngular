@@ -1,0 +1,104 @@
+<section>
+  <!-- Animated Leaves -->
+  <div class="leaves">
+    <div class="set">
+      <div><img src="../../assets/imagelogin/leaf_01.png" alt="Leaf 1"></div>
+      <div><img src="../../assets/imagelogin/leaf_02.png" alt="Leaf 2"></div>
+      <div><img src="../../assets/imagelogin/leaf_03.png" alt="Leaf 3"></div>
+      <div><img src="../../assets/imagelogin/leaf_04.png" alt="Leaf 4"></div>
+      <div><img src="../../assets/imagelogin/leaf_01.png" alt="Leaf 1"></div>
+      <div><img src="../../assets/imagelogin/leaf_02.png" alt="Leaf 2"></div>
+      <div><img src="../../assets/imagelogin/leaf_03.png" alt="Leaf 3"></div>
+    </div>
+  </div>
+
+  <!-- Background and Decorative Images -->
+  <img src="../../assets/imagelogin/bg.jpg" class="bg" alt="Background">
+  <img src="../../assets/imagelogin/girl.png" class="girl" alt="Illustration of a girl">
+  <img src="../../assets/imagelogin/trees.png" class="trees" alt="Tree illustration">
+
+  <!-- Sign Up Form -->
+  <form #SignUpForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="login">
+      <h2>Sign Up</h2>
+      <div class="inputBox">
+        <input
+          type="text"
+          placeholder="UserName"
+          aria-label="name"
+          name="name"
+          [(ngModel)]="form.name"
+          required
+          #nameInput="ngModel">
+        <div *ngIf="nameInput.invalid && nameInput.touched" class="error-box">
+          <i class="error-icon">⚠️</i>
+          <span>Name is required.</span>
+        </div>
+      </div>
+      <div class="inputBox">
+        <input
+          type="email"
+          placeholder="Email"
+          aria-label="Email"
+          name="email"
+          [(ngModel)]="form.email"
+          required
+          email
+          #emailInput="ngModel">
+        <div *ngIf="emailInput.invalid && emailInput.touched" class="error-box">
+          <i class="error-icon">⚠️</i>
+          <span *ngIf="emailInput.errors?.['required']">Email is required.</span>
+          <span *ngIf="emailInput.errors?.['email']">Invalid email format.</span>
+        </div>
+      </div>
+      <div class="inputBox">
+        <input
+          type="password"
+          placeholder="Password"
+          aria-label="Password"
+          name="password"
+          [(ngModel)]="form.password"
+          required
+          minlength="6"
+          #passwordInput="ngModel">
+        <div *ngIf="passwordInput.invalid && passwordInput.touched" class="error-box">
+          <i class="error-icon">⚠️</i>
+          <span *ngIf="passwordInput.errors?.['required']">Password is required.</span>
+          <span *ngIf="passwordInput.errors?.['minlength']">
+            Password must be at least 6 characters.
+          </span>
+        </div>
+      </div>
+      <div class="inputBox">
+        <input
+          type="password"
+          placeholder="RePassword"
+          aria-label="RePassword"
+          name="repassword"
+          [(ngModel)]="form.password_confirmation"
+          required
+          #repasswordInput="ngModel">
+        <div *ngIf="repasswordInput.invalid && repasswordInput.touched" class="error-box">
+          <i class="error-icon">⚠️</i>
+          <span>Password confirmation is required.</span>
+        </div>
+        <div *ngIf="form.password !== form.password_confirmation && repasswordInput.touched" class="error-box">
+          <i class="error-icon">⚠️</i>
+          <span>Passwords do not match.</span>
+        </div>
+      </div>
+      <div class="inputBox">
+        <input
+          type="submit"
+          value="Sign Up"
+          id="btn"
+          aria-label="Sign Up"
+          [disabled]="!SignUpForm.valid">
+      </div>
+      <div class="group">
+        <a href="#">I have an account</a>
+        <a routerLink="/login">Login</a>
+      </div>
+    </div>
+  </form>
+</section>

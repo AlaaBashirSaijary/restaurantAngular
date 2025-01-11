@@ -1,0 +1,48 @@
+
+
+<!-- إظهار صفحة الخطأ فقط إذا كان هناك خطأ -->
+<app-error *ngIf="isError"></app-error>
+
+<!-- إظهار صفحة "لم يتم العثور على طعام" إذا كانت المصفوفة فارغة -->
+<app-header *ngIf="!isError"></app-header>
+<app-search *ngIf="!isError"></app-search>
+<app-not-found *ngIf="!isError && (!foods || foods.length <= 0)" resetLinkList="Reset Search"></app-not-found>
+<app-tags></app-tags>
+<!-- عرض الأطعمة إذا كانت موجودة ولم يكن هناك خطأ -->
+<ul class="item-list" *ngIf="!isError && foods && foods.length > 0">
+  <li *ngFor="let food of foods" class="item">
+    <a class="item-link" routerLink="/food/{{ food.id }}">
+      <img src="../../{{ food.image_url }}" alt="{{ food.name }}" class="item-image" />
+    </a>
+    <div class="content">
+      <div class="name">{{ food.name }}
+        <span class="favorite {{ food.favorite ? '' : 'not'}}">
+          ❤
+        </span>
+        <div class="stars">
+          <ngx-stars
+            value="food.stars"
+            count="5"
+            color="red"
+            [readonly]="false"
+            (rate)="onRate(food.stars, food)">
+          </ngx-stars>
+        </div>
+        <div class="product-Item-footer">
+          <div class="orings">
+            <span *ngFor="let origin of food.origins">
+              {{ origin }}
+            </span>
+          </div>
+          <div class="cook-time">
+            <span>🕛</span>
+            {{ food.cook_time }}
+          </div>
+        </div>
+        <div class="price">
+          <span>{{ food.price | currency }}</span>
+        </div>
+      </div>
+    </div>
+  </li>
+</ul>

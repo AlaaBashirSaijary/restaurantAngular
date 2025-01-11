@@ -1,0 +1,51 @@
+
+<section>
+
+  <!-- Animated Leaves -->
+  <div class="leaves">
+    <div class="set">
+      <div><img src="../../assets/imagelogin/leaf_01.png" alt=""></div>
+      <div><img src="../../assets/imagelogin/leaf_02.png" alt="Leaf 2"></div>
+      <div><img src="../../assets/imagelogin/leaf_03.png" alt="Leaf 3"></div>
+      <div><img src="../../assets/imagelogin/leaf_04.png" alt="Leaf 4"></div>
+      <div><img src="../../assets/imagelogin/leaf_01.png" alt="Leaf 1"></div>
+      <div><img src="../../assets/imagelogin/leaf_02.png" alt="Leaf 2"></div>
+      <div><img src="../../assets/imagelogin/leaf_03.png" alt="Leaf 3"></div>
+      <div><img src="../../assets/imagelogin/leaf_04.png" alt="Leaf 4"></div>
+    </div>
+  </div>
+
+  <!-- Background and Decorative Images -->
+  <img src="../../assets/imagelogin/bg.jpg" class="bg" alt="Background">
+  <img src="../../assets/imagelogin/girl.png" class="girl" alt="Illustration of a girl">
+  <img src="../../assets/imagelogin/trees.png" class="trees" alt="Tree illustration">
+
+  <form #PasswordForm="ngForm" (ngSubmit)="onSubmit()" >
+    <div class="login">
+      <h2>Send Email for Reset Password</h2>
+      <div class="inputBox">
+        <input
+          type="email"
+          placeholder="Email"
+          aria-label="Email"
+          id="inputEmail"
+          [(ngModel)]="form.email"
+          name="email"
+          required
+        />
+      </div>
+
+      <div class="inputBox">
+        <input
+          type="submit"
+          value="Send Password"
+          id="btn"
+          aria-label="Login"
+          routerLink="/responce-Password"
+          [disabled]="!PasswordForm.valid"
+        />
+      </div>
+
+    </div>
+  </form>
+

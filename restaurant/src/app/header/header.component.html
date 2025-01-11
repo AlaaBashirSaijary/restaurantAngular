@@ -1,0 +1,23 @@
+<header>
+  <div class="container">
+    <a routerLink="/home" class="loggo">Food Mine</a>
+    <nav>
+      <ul>
+        <li *ngIf="!isLoggedIn">
+          <a routerLink="/login">Login</a>
+        </li>
+        <li *ngIf="isLoggedIn" class="menu-container">
+          <a routerLink="/dashboard">Alaa Saijary</a>
+          <div class="menu">
+            <a routerLink="/dashboard">Profile</a>
+            <a routerLink="/orders">Orders</a>
+            <a (click)="logout()">Logout</a>
+          </div>
+        </li>
+        <li>
+          <a routerLink="/cart">Cart <span>3</span></a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>

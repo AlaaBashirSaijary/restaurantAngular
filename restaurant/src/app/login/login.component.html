@@ -1,0 +1,86 @@
+<section>
+  <!-- Animated Leaves -->
+  <div class="leaves">
+    <div class="set">
+      <div><img src="../../assets/imagelogin/leaf_01.png" alt="Leaf 1"></div>
+      <div><img src="../../assets/imagelogin/leaf_02.png" alt="Leaf 2"></div>
+      <div><img src="../../assets/imagelogin/leaf_03.png" alt="Leaf 3"></div>
+      <div><img src="../../assets/imagelogin/leaf_04.png" alt="Leaf 4"></div>
+      <div><img src="../../assets/imagelogin/leaf_01.png" alt="Leaf 1"></div>
+      <div><img src="../../assets/imagelogin/leaf_02.png" alt="Leaf 2"></div>
+      <div><img src="../../assets/imagelogin/leaf_03.png" alt="Leaf 3"></div>
+      <div><img src="../../assets/imagelogin/leaf_04.png" alt="Leaf 4"></div>
+    </div>
+  </div>
+
+  <!-- Background and Decorative Images -->
+  <img src="../../assets/imagelogin/bg.jpg" class="bg" alt="Background">
+  <img src="../../assets/imagelogin/girl.png" class="girl" alt="Illustration of a girl">
+  <img src="../../assets/imagelogin/trees.png" class="trees" alt="Tree illustration">
+
+  <!-- Login Form -->
+  <form #loginForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="login">
+      <h2>Sign In</h2>
+
+      <!-- General Error Message -->
+      <div *ngIf="error" class="alert-box">
+        <i class="error-icon">⚠️</i>
+        <span>{{ error }}</span>
+      </div>
+
+      <!-- Email Field -->
+      <div class="inputBox" [class.invalid]="emailField.invalid && emailField.touched">
+        <input
+          type="email"
+          placeholder="Email"
+          aria-label="Email"
+          id="inputEmail"
+          [(ngModel)]="form.email"
+          name="email"
+          #emailField="ngModel"
+          required
+        />
+        <div *ngIf="emailField.invalid && emailField.touched" class="error-box">
+          <i class="error-icon">⚠️</i>
+          <span>Email is required.</span>
+        </div>
+      </div>
+
+      <!-- Password Field -->
+      <div class="inputBox" [class.invalid]="passwordField.invalid && passwordField.touched">
+        <input
+          type="password"
+          placeholder="Password"
+          aria-label="Password"
+          id="inputPassword"
+          [(ngModel)]="form.password"
+          name="password"
+          #passwordField="ngModel"
+          required
+        />
+        <div *ngIf="passwordField.invalid && passwordField.touched" class="error-box">
+          <i class="error-icon">⚠️</i>
+          <span>Password is required.</span>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="inputBox">
+        <input
+          type="submit"
+          value="Login"
+          id="btn"
+          aria-label="Login"
+          [disabled]="!loginForm.valid"
+        />
+      </div>
+
+      <!-- Links -->
+      <div class="group">
+        <a routerLink="/ResetPassword">Forget Password</a>
+        <a routerLink="/signup">Signup</a>
+      </div>
+    </div>
+  </form>
+</section>

@@ -1,0 +1,14 @@
+<div class="profile-container">
+  <h2>Welcome,Alaa</h2>
+  <p>Email:Alaa Saijary </p>
+
+  <div class="actions">
+    <button  class="logout-btn" *ngIf="loggedIn" (click)="logout($event)">Logout</button>
+  </div>
+  <div class="actions">
+    <button  class="logout-btn" *ngIf="!loggedIn">LogIn</button>
+  </div>
+  <div class="actions">
+    <button  class="logout-btn" *ngIf="loggedIn">Profile</button>
+  </div>
+</div>

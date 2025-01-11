@@ -1,0 +1,103 @@
+.item-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+
+  .item {
+    margin: 0.5rem;
+    background-color: #eef2f5; /* خلفية ناعمة */
+    border-radius: 1rem;
+    .item-link {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 25rem;
+      width: 25rem;
+      color: #0074d9; /* لون النص */
+
+      border: 1px solid #dde1e7; /* حدود خفيفة */
+      border-radius: 1rem;
+      overflow: hidden;
+      text-decoration: none;
+      color: #e72929;
+      transition: transform 0.3s, opacity 0.3s;
+
+      &:hover {
+        opacity: 0.9;
+        transform: scale(0.9); /* تأثير التكبير عند التمرير */
+        cursor: pointer;
+      }
+
+      .item-image {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+
+
+    }
+  }
+}
+.content {
+  padding: 0.5rem 1rem;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: self-start;
+  flex-direction: column;
+
+  .name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333333; /* نص أساسي */
+  }
+  .favorite {
+    position: absolute;
+    top: .5rem;
+    right: 1rem;
+    font-size: 1.2rem;
+    color: #e72929;
+
+    &.not {
+      color: #ccc;
+    }
+  }
+  .stars{
+    margin-bottom: .2rem;
+  }
+.product-Item-footer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: normal;
+}
+.orings{
+  flex: 9;
+
+}
+.orings span{
+  border-radius: 2rem;
+  background-color: #f7f9fc; /* خلفية ناعمة للشرائح */
+  display: inline-block;
+  font-size: .7rem;
+  color: #555555; /* لون نص رمادي */
+
+  margin-right: 13rem;
+}
+.cook-time{
+font-size: .8rem;
+color: #7f8c8d; /* لون النص */
+flex: 3;
+text-align: right;
+}
+.price{
+  color: #414141;
+  margin-top: .7rem;
+  font-weight: 300;
+}
+}
+
