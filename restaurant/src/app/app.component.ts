@@ -23,7 +23,6 @@ import { ErrorComponent } from "./error/error.component";
     FormsModule,
     HttpClientModule,
     LoadingComponent,
-    ErrorComponent
 ],
   providers:[JarwisService,TokenService,AuthService,BeforeLoginService,LoadingService,AfterLoginService,FoodService,
   ],

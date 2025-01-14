@@ -12,6 +12,7 @@ import { FoodPageComponent } from './food-page/food-page.component';
 import { CartPageComponent } from './cart-page/cart-page.component';
 import { CheckOutComponent } from './check-out/check-out.component';
 import { ErrorComponent } from './error/error.component';
+import { PaymatPageComponent } from './paymat-page/paymat-page.component';
 
 export const routes: Routes = [
     {
@@ -48,7 +49,7 @@ pathMatch:'full'   },
 {
   path:'login',
   component:LoginComponent,
-  canActivate:[AfterLoginService]
+  canActivate:[BeforeLoginService]
 
 },
 {
@@ -73,12 +74,20 @@ pathMatch:'full'   },
 },
 {
   path:'checkOut',
-  component:CheckOutComponent
+  component:CheckOutComponent,
+  canActivate:[AfterLoginService]
+
 },
 {
   path:'Error',
   component:ErrorComponent,
   canActivate:[AfterLoginService]
 },
+{
+  path:'payment',
+  component:PaymatPageComponent,
+  canActivate:[AfterLoginService]
+},
+
 
 ];

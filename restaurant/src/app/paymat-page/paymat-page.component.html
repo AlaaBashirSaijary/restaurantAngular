@@ -1,0 +1,27 @@
+<app-header></app-header>
+<div class="containerCheck">
+  <div class="content">
+    <h1>Order Summary</h1>
+   <div class="name">
+    <h1>Name:</h1>
+    <h2>Alaa Saijary</h2>
+   </div>
+   <div class="name">
+    <h1>Address:</h1>
+    <h2>Jesser</h2>
+   </div>
+    <app-order-items-list [order]="order"></app-order-items-list>
+  </div>
+
+  <div class="map">
+    <h1>Choose Your Address On Map</h1>
+  <app-map [order]="order"></app-map>
+  </div>
+</div>
+
+
+<div class="buttons-container">
+  <div class="buttons">
+    <app-paypal-button [order]="order"></app-paypal-button>
+  </div>
+</div>

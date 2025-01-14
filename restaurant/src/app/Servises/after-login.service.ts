@@ -1,18 +1,14 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, GuardResult, MaybeAsync, RouterStateSnapshot } from '@angular/router';
-import { Observable } from 'rxjs';
+import { CanActivate } from '@angular/router';
 import { TokenService } from './token.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AfterLoginService implements CanActivate {
+  constructor(private tokenService: TokenService) {}
 
-  constructor(private Token:TokenService) { }
-  canActivate(
-    route: ActivatedRouteSnapshot, 
-    state: RouterStateSnapshot
-  ): boolean | Observable<boolean> | Promise<boolean> {
-   return this.Token.loggedIn();
+  canActivate(): boolean {
+    return this.tokenService.loggedIn(); // إذا كان المستخدم مسجل الدخول
   }
 }

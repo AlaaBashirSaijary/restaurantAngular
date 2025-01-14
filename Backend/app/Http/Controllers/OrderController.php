@@ -28,7 +28,7 @@ class OrderController extends Controller
             'payment_id' => $validatedData['payment_id'],
             'total_price' => $validatedData['total_price'],
             'status' => $validatedData['status'],
-            'address_lat_lng' => DB::raw("ST_GeomFromText('{$validatedData['address_lat_lng']}')"),
+            'address_lat_lng' => DB::raw("ST_GeomFromText('POINT({$validatedData['address_lat_lng']['lng']} {$validatedData['address_lat_lng']['lat']})')"),
         ]);
 
         return response()->json([
@@ -51,10 +51,11 @@ class OrderController extends Controller
             'status' => $order->status,
         ], 200);
     }
-    public function getOrdersByUser($userId): JsonResponse
+    public function getOrdersByUser($userId)
     {
         try {
-            $orders = Order::where('user_id', $userId)->get();
+            // Fetch orders for the user using the correct method
+            $orders = Order::with('user')->where('user_id', $userId)->get();
 
             if ($orders->isEmpty()) {
                 return response()->json([
@@ -62,13 +63,30 @@ class OrderController extends Controller
                 ], 404);
             }
 
-            return response()->json($orders, 200);
+            return response()->json($orders);
         } catch (\Exception $e) {
             return response()->json([
                 'message' => 'An error occurred.',
                 'error' => $e->getMessage(),
             ], 500);
         }
+    }
+
+    public function getOrderDetails($orderId): JsonResponse
+    {
+        $order = Order::with('user')->find($orderId); // جلب الطلب مع المستخدم المرتبط
+
+        if (!$order) {
+            return response()->json([
+                'message' => 'Order not found.',
+            ], 404); // إذا لم يتم العثور على الطلب
+        }
+
+        return response()->json([
+            'order_id' => $order->id,
+            'status' => $order->status,
+            'user_name' => $order->user->name, // جلب اسم المستخدم المرتبط بالطلب
+        ], 200); // الرد بنجاح مع التفاصيل
     }
 
 }

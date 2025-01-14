@@ -16,20 +16,8 @@ public userObservable:Observable<User>;
   constructor(private http:HttpClient,private foodServices:FoodService,private toatrServices:ToastrService) {
     this.userObservable=this.userSubject.asObservable();
   }
-  login(urerLogin:IUserlogin):Observable<User>{
-  return  this.http.post<User>(this.foodServices.LoginURL,urerLogin).pipe(
-    tap({
-      next:(user)=>{
-        this.userSubject.next(user);
-        this.toatrServices.success(`Welcome to FoodMine ${user.name}!`,`Login Successful`);
 
-      },
-      error:(errorResponse)=>{
-this.toatrServices.error(errorResponse.error,'Login Faild');
-      }
-    })
-  );
-  }
+  
   public get currentUser():User{
     return this.userSubject.value;
   }

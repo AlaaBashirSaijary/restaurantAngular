@@ -5,12 +5,13 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { CartService } from '../Servises/Cart/cart.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { OrderItemsListComponent } from '../order-items-list/order-items-list.component';
-import { MapComponent } from "../map/map.component";
+import { MapComponent } from '../map/map.component';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-check-out',
   standalone: true,
-  imports: [HeaderComponent, FormsModule, ReactiveFormsModule, OrderItemsListComponent, MapComponent],
+  imports: [HeaderComponent, FormsModule, ReactiveFormsModule, OrderItemsListComponent,MapComponent],
   templateUrl: './check-out.component.html',
   styleUrls: ['./check-out.component.css'],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
@@ -31,7 +32,8 @@ export class CheckOutComponent implements OnInit {
   constructor(
     cartServices: CartService,
     private formBuilder: FormBuilder,
-    private notify: MatSnackBar
+    private notify: MatSnackBar,
+    private router:Router
   ) {
     const cart = cartServices.getCart();
     this.order.items = cart.items;
@@ -44,15 +46,17 @@ export class CheckOutComponent implements OnInit {
   }
 
   createOrder() {
+    this.router.navigateByUrl('/payment');
+
     if (this.checkoutform.invalid) {
       this.showNotification('Please fill in all fields','Invalid Inputs');
     } else {
       this.showNotification('Order created successfully!','ok');
       return;
     }
-    this.order.name=this.fc.name.value;
     this.order.address=this.fc.addresss.value;
-    console.log(this.order);
+    this.router.navigateByUrl('/payment');
+
   }
 
   private showNotification(message: string,button:string) {

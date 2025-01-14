@@ -1,0 +1,22 @@
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+button {
+  width: 15rem;
+  padding: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+  background: #e71d1d;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: rgb(167, 85, 85);
+}

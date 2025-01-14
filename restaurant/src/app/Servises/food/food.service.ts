@@ -24,7 +24,9 @@ export class FoodService {
   searchUrl = this.foodUrl + '/search/';
   foodTagUrl = this.baseUrl + '/tag/';
   foodIDURL = this.foodUrl + '/';
-  LoginURL = this.baseUrl + '/api/users/login';
+  //LoginURL = this.baseUrl + '/api/users/login';
+  OrdersByUserIdURL=this.baseUrl+'/users/{id_user}/orders';
+  UserInformation=this.baseUrl+'/user/{id_user}';
 
   // واجهة الطعام الافتراضي
   newFood(): Food {

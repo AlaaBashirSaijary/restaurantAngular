@@ -8,6 +8,7 @@ use App\Http\Controllers\foodControler;
 use App\Http\Controllers\tagControler;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\UserController;
 
 Route::get('/check-database', [DatabaseCheckController::class, 'checkConnection']);
 Route::post('/login', [AuthController::class, 'login']);
@@ -21,7 +22,9 @@ Route::get('/foods/{id}', [foodControler::class, 'getById']);
 Route::get('/tag/{name}', [tagControler::class, 'getTagByName']);
 Route::post('/orders', [OrderController::class, 'createOrder']); // إنشاء طلب جديد
 Route::get('/orders/{orderId}/status', [OrderController::class, 'getOrderStatus']); // حالة الطلب
-Route::get('/users/{userId}/orders', [OrderController::class, 'getOrdersByUser']); // طلبات مستخدم معين
+Route::get('/users/{userId}/orders', [OrderController::class, 'getOrdersByUser']);
+Route::get('/orders/{orderId}', [OrderController::class, 'getOrderDetails']);
+Route::get('/user/{id}', [UserController::class, 'getUserById']);
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/cart/add/{foodId}', [CartController::class, 'addToCart']);
     Route::get('/cart', [CartController::class, 'getCart']);
