@@ -1,0 +1,37 @@
+{
+    "authHost": "http://localhost",
+    "authEndpoint": "/broadcasting/auth",
+    "clients": [
+      {
+        "appId": "6d852a28acefe034",
+        "key": "43a0b11e03164b301c9e56764741133a"
+      }
+    ],
+    "database": "sqlite",
+    "databaseConfig": {
+      "redis": {},
+      "sqlite": {
+        "databasePath": "/database/laravel-echo-server.sqlite"
+      }
+    },
+    "devMode": true,
+    "host": null,
+    "port": "6001",
+    "protocol": "http",
+    "socketio": {},
+    "secureOptions": 67108864,
+    "sslCertPath": "",
+    "sslKeyPath": "",
+    "sslCertChainPath": "",
+    "sslPassphrase": "",
+    "subscribers": {
+      "http": true,
+      "redis": false
+    },
+    "apiOriginAllow": {
+      "allowCors": true,
+      "allowOrigin": "*",
+      "allowMethods": "GET, POST",
+      "allowHeaders": "Content-Type"
+    }
+  }

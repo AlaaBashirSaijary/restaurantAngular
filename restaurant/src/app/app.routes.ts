@@ -75,7 +75,7 @@ pathMatch:'full'   },
 {
   path:'checkOut',
   component:CheckOutComponent,
-  canActivate:[AfterLoginService]
+ // canActivate:[AfterLoginService]
 
 },
 {

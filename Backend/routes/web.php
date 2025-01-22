@@ -13,7 +13,9 @@ use Illuminate\Support\Facades\DB; // إضافة هذا السطر لاستير�
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+Route::get('/websocket-test', function () {
+    return view('websocket');
+});
 Route::get('/', function () {
     return view('welcome');
 });

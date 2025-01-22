@@ -9,7 +9,22 @@ use App\Http\Controllers\tagControler;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController;
+use App\Events\MessageSent;
+use Illuminate\Http\Request;
+use App\Http\Controllers\VideoControll;
+Route::post('/join-room', [VideoControll::class, 'joinRoom']);
+Route::post('/create-room', [VideoControll::class, 'createRoom']);
+Route::post('/create-event', [VideoControll::class, 'createEvcent']);
+/*Route::post('/create-room', function (Request $request) {
+    return ['roomId' => uniqid()];
+});*/
+Route::post('/send-message', function (Request $request) {
+    $message = $request->input('message');
+    $roomId = $request->input('roomId');
 
+    event(new MessageSent($message, $roomId));
+    return response()->json(['status' => 'Message sent']);
+});
 Route::get('/check-database', [DatabaseCheckController::class, 'checkConnection']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/signup', [AuthController::class, 'signup']);
